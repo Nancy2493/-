@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>3D页面</title>
+<style> 
+body{
+  background: black;
+  
+}
+/*对于相机元素*/
+.camera{
+  perspective: 800px;/*这个属性是视距(景深)，就是目测的距离*/
+  width: 500px;
+  height: 300px;
+  margin: auto;
+  transform-style: preserve-3d;/*该属性规定如何在 3D 空间中呈现被嵌套的元素。preserve-3d子元素将保留其 3D 位置。*/
+}
+/*对于模块元素*/
+.kuai{
+  width: 100px;
+  height: 300px;
+  margin: 50px auto;
+  float: left;
+  transform-style: preserve-3d;
+  position: relative;
+  transition:transform 1s;
+  margin-left: -1px;
+}
+/*对于模块的每个面元素*/
+.kuai:nth-of-type(2)>.mian{
+  background-position: -100px 0;
+}
+.kuai:nth-of-type(3)>.mian{
+  background-position: -200px 0;
+}
+.kuai:nth-of-type(4)>.mian{
+  background-position: -300px 0;
+}
+.kuai:nth-of-type(5)>.mian{
+  background-position: -400px 0;
+}
+.kuai:nth-of-type(6)>.mian{
+  background-position: -500px 0;
+}
+.mian{
+  width: 100px;
+  height: 300px;
+  position: absolute;
+  font-size:100px;
+  text-align: center;
+  line-height: 300px;
+  transform-style: preserve-3d;
+  background-color: black;
+  backface-visibility: hidden;
+}
+.mian:nth-of-type(1){
+  transform: translateZ(150px);
+  background:url(http://www.jujumao.org/data/attachment/forum/201404/21/110744e9xuhmzhee1cfau9.jpg) no-repeat;
+  background-size: 500px 100%;
+}
+.mian:nth-of-type(2){
+  transform: translateZ(-150px) rotateX(180deg);
+  background:url(https://c.hiphotos.baidu.com/zhidao/pic/item/c83d70cf3bc79f3da25bb440b8a1cd11728b2903.jpg) no-repeat;
+  background-size: 500px 100%;
+}
+.mian:nth-of-type(3){
+  width: 300px;
+  transform: rotateY(-90deg) translateZ(150px);/*3d中transform属性是关键的，它主要是靠旋转 移动 缩放来变形实现的*/
+}
+.mian:nth-of-type(4){
+  width: 300px;
+  transform: rotateY(90deg) translateZ(-50px);
+}
+.mian:nth-of-type(5){
+  transform: rotateX(90deg) translateZ(150px);
+  background:url(https://imgsrc.baidu.com/forum/pic/item/72f082025aafa40f99a7e477ab64034f78f01932.jpg) no-repeat;
+  background-size: 500px 100%;
+}
+.mian:nth-of-type(6){
+  transform: rotateX(-90deg) translateZ(150px);
+  background:url(http://img.61gequ.com/allimg/2011-5/20115915514376686.jpg) no-repeat;
+  background-size: 500px 100%;
+}
+
+
+</style>
+</head>
+<body>
+<script type="text/javascript">
+    window.onload=function() {
+    var camera=document.getElementById('camera');
+    var kuais=camera.getElementsByClassName('kuai');
+    var chishu=0;
+    var geshu=5;
+    camera.onclick=function() {
+      chishu++;
+      for(var i=0;i<geshu;i++){
+        kuais[i].style="transition:transform 1s "+100*i+"ms;transform:rotateX("+chishu*90+"deg)";
+      }
+    }
+}
+</script>
+<div class="camera" id="camera">
+    <div class="kuai">
+      <div class="mian"></div>
+      <div class="mian"></div>
+      <div class="mian"></div>
+      <div class="mian"></div>
+      <div class="mian"></div>
+      <div class="mian"></div>
+    </div>
+
+    <div class="kuai">
+      <div class="mian"></div>
+      <div class="mian"></div>
+      <div class="mian"></div>
+      <div class="mian"></div>
+      <div class="mian"></div>
+      <div class="mian"></div>
+    </div>
+
+    <div class="kuai">
+      <div class="mian"></div>
+      <div class="mian"></div>
+      <div class="mian"></div>
+      <div class="mian"></div>
+      <div class="mian"></div>
+      <div class="mian"></div>
+    </div>
+
+    <div class="kuai">
+      <div class="mian"></div>
+      <div class="mian"></div>
+      <div class="mian"></div>
+      <div class="mian"></div>
+      <div class="mian"></div>
+      <div class="mian"></div>
+    </div>
+
+    <div class="kuai">
+      <div class="mian"></div>
+      <div class="mian"></div>
+      <div class="mian"></div>
+      <div class="mian"></div>
+      <div class="mian"></div>
+      <div class="mian"></div>
+    </div>
+  </div>
+
+
+</body>
+</html>
